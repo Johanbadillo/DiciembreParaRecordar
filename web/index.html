@@ -1,70 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjetas Festivas Personalizadas</title>
+    <title>Tarjetas Festivas</title>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-    <div class="contenedor-principal">
-        <!-- Barra de pestañas -->
-        <div class="titulo-principal" id="titulo-principal">
-            <h1>Tarjetas Festivas Personalizadas</h1>
-            <div class="pestañas">
-                <button class="boton-pestaña activo" data-pestaña="navidad">Navidad</button>
-                <button class="boton-pestaña" data-pestaña="cumple">Cumpleaños</button>
-                <button class="boton-pestaña" data-pestaña="anio">Año Nuevo</button>
-            </div>
-        </div>
+<header class="titulo-principal navidad" id="titulo-principal">
+    <h1>Tarjetas Festivas Personalizadas</h1>
+    <nav class="pestañas" aria-label="Seleccionar festividad">
+        <button class="boton-pestaña activo" data-pestaña="navidad" aria-selected="true">🎄 Navidad</button>
+        <button class="boton-pestaña" data-pestaña="cumple">🎂 Cumpleaños</button>
+        <button class="boton-pestaña" data-pestaña="anio">🎆 Año Nuevo</button>
+    </nav>
+</header>
 
-        <!-- Pestaña Navidad -->
-        <div id="navidad" class="contenido-pestaña activo">
-            <div class="tarjeta">
-                <h1>¡Feliz Navidad!</h1>
-                <div class="mensaje-festivo navidad">
-                    Que esta Navidad esté llena de amor, paz y alegría.<br><br>
-                    Que el espíritu navideño ilumine tu hogar y tu corazón.<br><br>
-                    ¡Te deseo una muy Feliz Navidad y un próspero Año Nuevo!<br><br>
-                    Con todo mi cariño ❤️
-                </div>
-            </div>
-        </div>
+<main class="contenedor-principal">
+    <section id="navidad" class="contenido-pestaña activo">
+        <article class="tarjeta animar">
+            <h2>¡Feliz Navidad!</h2>
+            <p class="mensaje-festivo navidad">
+                Que esta Navidad esté llena de amor, paz y alegría.<br><br>
+                Que el espíritu navideño ilumine tu hogar y tu corazón.<br><br>
+                ¡Feliz Navidad y próspero Año Nuevo! ❤️
+            </p>
+        </article>
+    </section>
 
-        <!-- Pestaña Cumpleaños -->
-        <div id="cumple" class="contenido-pestaña">
-            <div class="tarjeta">
-                <h1>¡Feliz Cumpleaños!</h1>
-                <div class="mensaje-festivo cumple">
-                    ¡Hoy es tu día especial!<br><br>
-                    Que se cumplan todos tus deseos y sueños.<br><br>
-                    Que la vida te sorprenda con momentos inolvidables,<br>
-                    rodeado de las personas que más quieres.<br><br>
-                    ¡Feliz Cumpleaños! 🎉🥳🎂
-                </div>
-            </div>
-        </div>
+    <section id="cumple" class="contenido-pestaña">
+        <article class="tarjeta animar">
+            <h2>¡Feliz Cumpleaños!</h2>
+            <p class="mensaje-festivo cumple">
+                Hoy celebramos tu vida 🎉<br><br>
+                Que tus sueños se cumplan y tu sonrisa nunca falte.
+            </p>
+        </article>
+    </section>
 
-        <!-- Pestaña Año Nuevo -->
-        <div id="anio" class="contenido-pestaña">
-            <div class="tarjeta">
-                <h1>¡Feliz Año Nuevo!</h1>
-                <div class="mensaje-festivo anio">
-                    Que el 2026 llegue cargado de nuevas oportunidades,<br>
-                    salud, amor, éxitos y mucha felicidad.<br><br>
-                    Deja atrás lo que no suma y abraza lo nuevo con ilusión.<br><br>
-                    ¡Feliz Año Nuevo! 🥂✨🎆
-                </div>
-            </div>
-        </div>
+    <section id="anio" class="contenido-pestaña">
+        <article class="tarjeta animar">
+            <h2>¡Feliz Año Nuevo!</h2>
+            <p class="mensaje-festivo anio">
+                Que el 2026 te regale nuevas oportunidades,<br>
+                salud, amor y éxitos 🥂✨
+            </p>
+        </article>
+    </section>
+</main>
 
-        <!-- Reproductor de música oculto -->
-        <audio id="reproductor-musica" loop></audio>
-    </div>
+<audio id="reproductor-musica" loop></audio>
 
-    <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
-
 </html>

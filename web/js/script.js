@@ -1,52 +1,37 @@
-const botonesPestañas = document.querySelectorAll('.boton-pestaña');
-const contenidosPestañas = document.querySelectorAll('.contenido-pestaña');
-const reproductor = document.getElementById('reproductor-musica');
-const tituloPrincipal = document.getElementById('titulo-principal');
+const botones = document.querySelectorAll('.boton-pestaña');
+const secciones = document.querySelectorAll('.contenido-pestaña');
+const titulo = document.getElementById('titulo-principal');
+const audio = document.getElementById('reproductor-musica');
 
-const configuraciones = {
-    navidad: {
-        musica: './sounds/MA_SoundCreator_Winter_Holiday.wav', // Cambia si el nombre es diferente
-        clase: 'navidad',
-        inicio: 60  // Minuto 1
-    },
-    cumple: {
-        musica: './sounds/tu_archivo_cumple.wav', // Pon aquí el nombre real de tu archivo de cumpleaños
-        clase: 'cumple',
-        inicio: 60
-    },
-    anio: {
-        musica: './sounds/tu_archivo_anio.wav', // Pon aquí el nombre real de tu archivo de año nuevo
-        clase: 'anio',
-        inicio: 60
-    }
+const config = {
+    navidad: { clase: 'navidad', musica: './sounds/comoHago.mp3', inicio: 60 },
+    cumple:  { clase: 'cumple',  musica: './sounds/ena.mp3', inicio: 60 },
+    anio:    { clase: 'anio',    musica: './sounds/extasis.mp3', inicio: 60 }
 };
 
-botonesPestañas.forEach(boton => {
+function cambiarPestana(id) {
+    botones.forEach(b => {
+        b.classList.toggle('activo', b.dataset.pestaña === id);
+        b.setAttribute('aria-selected', b.dataset.pestaña === id);
+    });
+
+    secciones.forEach(s => {
+        s.classList.toggle('activo', s.id === id);
+    });
+
+    titulo.className = `titulo-principal ${config[id].clase}`;
+
+    audio.pause();
+    audio.src = config[id].musica;
+    audio.currentTime = config[id].inicio;
+    audio.play().catch(() => {});
+}
+
+botones.forEach(boton => {
     boton.addEventListener('click', () => {
-        // Botón activo
-        botonesPestañas.forEach(b => b.classList.remove('activo'));
-        boton.classList.add('activo');
-
-        const idPestaña = boton.getAttribute('data-pestaña');
-
-        // Mostrar contenido
-        contenidosPestañas.forEach(c => c.classList.remove('activo'));
-        document.getElementById(idPestaña).classList.add('activo');
-
-        // Cambiar tema del título
-        tituloPrincipal.className = 'titulo-principal ' + configuraciones[idPestaña].clase;
-
-        // Reproducir música desde el minuto 1
-        const config = configuraciones[idPestaña];
-        reproductor.src = config.musica;
-        reproductor.currentTime = config.inicio;
-        reproductor.play().catch(() => {
-            console.log("Sonido bloqueado. Haz click en una pestaña para activarlo.");
-        });
+        cambiarPestana(boton.dataset.pestaña);
     });
 });
 
-// Inicio: pestaña Navidad
-tituloPrincipal.classList.add('navidad');
-reproductor.src = configuraciones.navidad.musica;
-reproductor.currentTime = configuraciones.navidad.inicio;
+// Inicio
+cambiarPestana('navidad');
