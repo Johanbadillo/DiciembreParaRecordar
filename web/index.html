@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjetas Festivas Personalizadas</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <div class="contenedor-principal">
+        <!-- Barra de pestañas -->
+        <div class="titulo-principal">
+            <h1>Tarjetas Festivas Personalizadas</h1>
+            <div class="pestañas">
+                <button class="boton-pestaña activo" data-pestaña="navidad">Navidad</button>
+                <button class="boton-pestaña" data-pestaña="cumple">Cumpleaños</button>
+                <button class="boton-pestaña" data-pestaña="anio">Año Nuevo</button>
+            </div>
+        </div>
+
+        <!-- Pestaña Navidad -->
+        <div id="navidad" class="contenido-pestaña activo">
+            <div class="tarjeta">
+                <h1>¡Feliz Navidad!</h1>
+                <div class="area-editable" contenteditable="true" id="texto-navidad">
+                    Escribe aquí tu mensaje navideño...
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña Cumpleaños -->
+        <div id="cumple" class="contenido-pestaña">
+            <div class="tarjeta">
+                <h1>¡Feliz Cumpleaños!</h1>
+                <div class="area-editable" contenteditable="true" id="texto-cumple">
+                    Escribe aquí tu mensaje de cumpleaños...
+                </div>
+            </div>
+        </div>
+
+        <!-- Pestaña Año Nuevo -->
+        <div id="anio" class="contenido-pestaña">
+            <div class="tarjeta">
+                <h1>¡Feliz Año Nuevo!</h1>
+                <div class="area-editable" contenteditable="true" id="texto-anio">
+                    Escribe aquí tus deseos para el año nuevo...
+                </div>
+            </div>
+        </div>
+
+        <!-- Reproductor de música oculto -->
+        <audio id="reproductor-musica" loop></audio>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
