@@ -15,7 +15,6 @@ body {
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-
 }
 
 .contenedor-principal {
@@ -25,18 +24,61 @@ body {
 }
 
 .titulo-principal {
-    background: #b32428;
-    padding: 15px 10px;
+    padding: 20px 15px;
     text-align: center;
     flex-shrink: 0;
     z-index: 10;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 4px solid;
+    border-image: linear-gradient(90deg, transparent, currentColor 50%, transparent) 1;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 255, 255, 0.1) inset;
 }
+
+.titulo-principal.navidad {
+    background: linear-gradient(135deg, #b32428, #d94649);
+    box-shadow: 0 4px 15px rgba(179, 36, 40, 0.4);
+    color: #f8ddbb;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.titulo-principal.cumple {
+    background: linear-gradient(135deg, #6A0DAD, #C8A2C8);
+    box-shadow: 0 4px 15px rgba(106, 13, 173, 0.45);
+    color: #d4d4d4;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        0 0 25px rgba(255, 105, 180, 0.4);
+}
+
+
+.titulo-principal.anio {
+    background: linear-gradient(135deg, #2A0F45, #6A0DAD);
+    box-shadow: 0 6px 20px rgba(106, 13, 173, 0.55);
+    color: #dfc7f7;
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.25),
+        0 4px 10px rgba(0, 0, 0, 0.15),
+        0 0 25px rgba(59, 130, 246, 0.4);
+}
+
+
 
 .titulo-principal h1 {
     margin: 10px 0;
     font-family: navi;
-    color: #FFF1DC;
     font-size: clamp(1.8rem, 5vw, 3rem);
+    transition: color 0.6s ease;
 }
 
 .pestañas {
@@ -78,10 +120,13 @@ body {
     justify-content: center;
     padding: 20px;
     overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.8s ease;
 }
 
 .contenido-pestaña.activo {
     display: flex;
+    opacity: 1;
 }
 
 .tarjeta {
@@ -93,7 +138,6 @@ body {
     max-width: 600px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     text-align: center;
-    min-height: auto;
 }
 
 .tarjeta h1 {
@@ -101,41 +145,56 @@ body {
     margin-bottom: 20px;
 }
 
-.area-editable {
-    min-height: 200px;
-    padding: 20px;
+.mensaje-festivo {
+    font-size: clamp(17px, 4.5vw, 20px);
+    line-height: 1.8;
+    padding: 30px;
     background: rgba(255, 255, 255, 0.95);
-    border: 2px dashed #ccc;
-    border-radius: 10px;
-    font-size: clamp(16px, 4vw, 18px);
-    outline: none;
-    line-height: 1.6;
+    border-radius: 20px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    color: #333;
 }
 
-/* Imágenes de fondo */
+.mensaje-festivo.navidad {
+    font-family: navi, 'Segoe UI', sans-serif;
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 240, 220, 0.95));
+    border: 3px solid #FFD700;
+    color: #8B0000;
+}
+
+.mensaje-festivo.cumple {
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 230, 255, 0.95));
+    border: 3px solid #FF69B4;
+    color: #C71585;
+    font-weight: 600;
+}
+
+.mensaje-festivo.anio {
+    background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(220, 240, 255, 0.95));
+    border: 3px solid #FFD700;
+    color: #1e40af;
+    font-weight: 600;
+}
+
+/* Fondos */
 #navidad {
     background-image: url(../imgs/navidad.jpg);
 }
 
 #cumple {
-    background-image: url(../imgs/cumple.webp);
+    background-image: url(../imgs/cumple.png);
 }
 
 #anio {
     background-image: url(../imgs/aio.jpg);
 }
 
-/* Mejor animación de entrada */
-.contenido-pestaña {
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-.contenido-pestaña.activo {
-    opacity: 1;
-}
-
-/* Responsive extra para móviles */
+/* Responsive móvil */
 @media (max-width: 480px) {
     .pestañas {
         flex-direction: column;
